@@ -284,7 +284,12 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
 
   /// Creates or Select [InputDecoration]
   InputDecoration getInputDecoration(InputDecoration? decoration) {
-    return decoration;
+    InputDecoration value = decoration ??
+        InputDecoration(
+          border: widget.inputBorder ?? UnderlineInputBorder(),
+          hintText: widget.hintText,
+        );
+    return value;
   }
 
   /// Validate the phone number when a change occurs
