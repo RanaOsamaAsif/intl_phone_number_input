@@ -373,36 +373,7 @@ class _InputWidgetView
     final countryCode = state.country?.alpha2Code ?? '';
     final dialCode = state.country?.dialCode ?? '';
 
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                SelectorButton(
-                  country: state.country,
-                  countries: state.countries,
-                  onCountryChanged: state.onCountryChanged,
-                  selectorConfig: widget.selectorConfig,
-                  selectorTextStyle: widget.selectorTextStyle,
-                  searchBoxDecoration: widget.searchBoxDecoration,
-                  locale: state.locale,
-                  isEnabled: widget.isEnabled,
-                  autoFocusSearchField: widget.autoFocusSearch,
-                  isScrollControlled: widget.countrySelectorScrollControlled,
-                ),
-                SizedBox(
-                  height: state.selectorButtonBottomPadding,
-                ),
-              ],
-            ),
-            SizedBox(width: widget.spaceBetweenSelectorAndTextField),
-          ],
-          Flexible(
-            child: TextFormField(
+    return TextFormField(
               key: widget.fieldKey ?? Key(TestHelper.TextInputKeyValue),
               textDirection: TextDirection.ltr,
               controller: state.controller,
@@ -436,10 +407,6 @@ class _InputWidgetView
                     : FilteringTextInputFormatter.digitsOnly,
               ],
               onChanged: state.onChanged,
-            ),
-          )
-        ],
-      ),
-    );
+            );
   }
 }
